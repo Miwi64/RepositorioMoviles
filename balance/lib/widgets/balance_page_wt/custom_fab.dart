@@ -17,7 +17,7 @@ class CustomFAB extends StatelessWidget {
         label: 'Gasto',
         labelStyle: const TextStyle(fontSize: 20),
         onTap: () {
-          Navigator.push(context, AnimatedRoute(const AddExpenses()));
+          Navigator.push(context, AnimatedRoute(AddExpenses()));
         }));
     botones.add(SpeedDialChild(
         backgroundColor: Colors.greenAccent,

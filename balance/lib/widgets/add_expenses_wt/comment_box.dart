@@ -1,10 +1,15 @@
+import 'package:balance/models/combined_model.dart';
 import 'package:flutter/material.dart';
 
 class CommentBox extends StatelessWidget {
-  const CommentBox({super.key});
+  final CombinedModel combinedModel;
+  const CommentBox({super.key, required this.combinedModel});
 
   @override
   Widget build(BuildContext context) {
+    String _text = '';
+    _text = combinedModel.comment;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(children: [
@@ -13,10 +18,11 @@ class CommentBox extends StatelessWidget {
         Expanded(
           flex: 6,
           child: TextFormField(
+            initialValue: _text,
             keyboardType: TextInputType.text,
             maxLength: 15,
             decoration: InputDecoration(
-                prefix: Text('  '),
+                prefix: const Text('  '),
                 counterText: '',
                 hintText: 'Agregar comentario',
                 hintStyle: const TextStyle(fontSize: 18),
@@ -27,8 +33,11 @@ class CommentBox extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                     borderSide:
                         const BorderSide(color: Colors.lime, width: 2))),
+            onChanged: (texto) {
+              combinedModel.comment = texto;
+            },
           ),
-        )
+        ),
       ]),
     );
   }

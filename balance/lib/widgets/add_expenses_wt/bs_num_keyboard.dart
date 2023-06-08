@@ -1,9 +1,11 @@
+import 'package:balance/models/combined_model.dart';
 import 'package:flutter/material.dart';
 
 import 'action_buttons.dart';
 
 class BSNumKeyboard extends StatefulWidget {
-  const BSNumKeyboard({super.key});
+  final CombinedModel combinedModel;
+  const BSNumKeyboard({super.key, required this.combinedModel});
 
   @override
   State<BSNumKeyboard> createState() => _BSNumKeyboardState();
@@ -126,6 +128,8 @@ class _BSNumKeyboardState extends State<BSNumKeyboard> {
                       ok: () {
                         setState(() {
                           if (importe.isEmpty) importe = '0.00';
+                          widget.combinedModel.amount =
+                              double.tryParse(importe);
                           Navigator.pop(context);
                         });
                       },
